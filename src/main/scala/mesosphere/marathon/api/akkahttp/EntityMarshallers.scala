@@ -165,6 +165,8 @@ object EntityMarshallers {
   implicit val enrichedTaskMarshaller = playJsonMarshaller[raml.EnrichedTask]
   implicit val enrichedTasksListMarshaller = playJsonMarshaller[raml.EnrichedTasksList]
   implicit val deleteTasksUnmarshaller = playJsonUnmarshaller[raml.DeleteTasks]
+  implicit val podUnmarshaller = playJsonUnmarshaller[raml.Pod]
+  implicit val podMarshaller = playJsonMarshaller[raml.Pod]
 
   implicit class FromEntityUnmarshallerOps[T](val um: FromEntityUnmarshaller[T]) extends AnyVal {
     def handleValidationErrors: FromEntityUnmarshaller[T] = um.recover(_ ⇒ _ ⇒ {
